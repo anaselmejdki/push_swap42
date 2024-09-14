@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 12:57:29 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/13 23:23:35 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/15 00:11:11 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,51 @@ int	fill_stack_a(t_node **stack, char **av)
 	return (1);
 }
 
+int	duplicate(t_node *stack)
+{
+	t_node *stack_a;
+	t_node *stack_b;
+	
+	stack_a = stack;
+	while (stack_a != NULL)
+	{
+		stack_b = stack_a->next;
+		while (stack_b != NULL)
+		{
+			if (stack_b->value == stack_a->value)
+				return (0);
+			stack_b = stack_b->next;
+		}
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
+
+int size_of_stack(t_node *stack)
+{
+	t_node *node;
+	int i;
+
+	node = stack;
+	i = 0;
+	while (node)
+	{
+		node = node->next;
+		i++;
+	}
+	return (i);
+}
+
+int check_sort(t_node *stack)
+{
+	t_node *head;
+	
+	head = stack;
+	while (head && head->next)
+	{
+		if (head->value > head->next->value)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}

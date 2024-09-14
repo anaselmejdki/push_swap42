@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:49:36 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/13 23:01:00 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/15 00:11:44 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ char	**ft_split(char *str, char c);
 int is_valid(char *str);
 int	fill_stack_a(t_node **stack, char **av);
 void    create_and_add_node(t_node **stack_a, long nbr);
+int	duplicate(t_node *stack);
+int size_of_stack(t_node *stack);
+int check_sort(t_node *stack);
 
 #endif

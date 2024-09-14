@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-
-
 void print_stack(t_node *stack) {
     while (stack) {
         printf("%d -> ", stack->value);
@@ -10,24 +8,35 @@ void print_stack(t_node *stack) {
     printf("NULL\n");
 }
 
+void print_error(char *str)
+{
+    int i = 0;
+
+    write(1, "Error: ", 8);
+    while (str[i])
+    {
+        write(1 ,&str[i], 1);
+        i++;
+    }
+    write(1, "\n", 1);
+}
 int main(int argc, char **argv) {
     
     if (argc < 2)
-    {
-        printf("DAKHAL ARGV");
         return (0);
-    }
     t_node *stack = NULL;
 
-    if (fill_stack_a(&stack, argv))
-        printf("Stack filled successfully!\n");
+    if (fill_stack_a(&stack, argv) && duplicate(stack) && check_sort(stack))
+        print_error("Stack filled successfully!\n");
     else
-        printf("Error occurred while filling the stack.\n");
+        print_error(" occurred while filling the stack.\n");
+    int size = size_of_stack(stack);
+    printf("%d\n", size);
 
     // Print the stack
-    print_stack(stack);
+    // print_stack(stack);
 
-    // Free the stack
+
     t_node *tmp;
     while (stack) {
         tmp = stack;
