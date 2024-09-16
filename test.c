@@ -1,48 +1,41 @@
 #include "push_swap.h"
 
-void print_stack(t_node *stack) {
-    while (stack) {
-        printf("%d -> ", stack->value);
-        stack = stack->next;
-    }
-    printf("NULL\n");
-}
 
-void print_error(char *str)
+
+void    free_stack(t_node **stack)
 {
-    int i = 0;
-
-    write(1, "Error: ", 8);
-    while (str[i])
-    {
-        write(1 ,&str[i], 1);
-        i++;
-    }
-    write(1, "\n", 1);
-}
-int main(int argc, char **argv) {
+    t_node *node;
     
-    if (argc < 2)
-        return (0);
-    t_node *stack = NULL;
-
-    if (fill_stack_a(&stack, argv) && duplicate(stack) && check_sort(stack))
-        print_error("Stack filled successfully!\n");
-    else
-        print_error(" occurred while filling the stack.\n");
-    int size = size_of_stack(stack);
-    printf("%d\n", size);
-
-    // Print the stack
-    // print_stack(stack);
-
-
-    t_node *tmp;
-    while (stack) {
-        tmp = stack;
-        stack = stack->next;
-        free(tmp);
+    while (*stack)
+    {
+        node = *stack;
+        *stack = node->next;
+        free(node);
     }
-
-    return 0;
+}
+int main(int ac, char *av[])
+{
+	int len;
+	t_node *stack_a;
+	t_node *stack_b;
+	
+	if (ac < 2)
+		return(write(1,"ERROR\n", 6), 0);
+	stack_a = NULL;
+	stack_b = NULL;
+	if (fill_stack_a(&stack_a, av) == 0 || duplicate(stack_a) == 0)
+	{
+		write(1, "ERROR\n", 6);
+		free_stack(&stack_a);
+		return(0);
+	}
+	len = size_of_stack(stack_a);
+	if (check_sort(stack_a) == 1)
+	{
+		free_stack(&stack_a);
+		return(0);
+	}
+	else 
+		sorting(&stack_a, &stack_b, len);
+	free_stack(&stack_a);
 }

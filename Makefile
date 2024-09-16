@@ -6,7 +6,7 @@ RM = rm -rf
 
 #Files
 FILES = ft_split.c func_pars.c parsing.c push.c reverse_rotate.c rotate.c \
-	swap.c test.c
+	swap.c sorting.c func_sort.c test.c
 
 OBJS = ${FILES:.c=.o}
 
