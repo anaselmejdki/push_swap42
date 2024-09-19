@@ -6,38 +6,38 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 12:57:29 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/16 22:59:10 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/19 22:16:04 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    create_and_add_node(t_node **stack_a, long nbr)
+void	create_and_add_node(t_node **stack_a, long nbr)
 {
-    t_node *new_node;
+	t_node	*new_node;
+	t_node	*node;
 
-    new_node = (t_node *)malloc(sizeof(t_node));
-    if (!new_node)
-        return ;
-    new_node->value = nbr;
-    new_node->next = NULL;
-    if (!*stack_a)
-    {
-        *stack_a = new_node;
-        return ;
-    }
-    t_node *node;
-    node = *stack_a;
-    while (node->next != NULL)
-        node = node->next;
-    node->next = new_node;
+	new_node = (t_node *)malloc(sizeof(t_node));
+	if (!new_node)
+		return ;
+	new_node->value = nbr;
+	new_node->next = NULL;
+	if (!*stack_a)
+	{
+		*stack_a = new_node;
+		return ;
+	}
+	node = *stack_a;
+	while (node->next != NULL)
+		node = node->next;
+	node->next = new_node;
 }
 
 int	fill_stack_a(t_node **stack, char **av)
 {
-	char **split;
-	int i;
-	int j;
+	char	**split;
+	int		i;
+	int		j;
 
 	i = 1;
 	while (av[i])
@@ -63,9 +63,9 @@ int	fill_stack_a(t_node **stack, char **av)
 
 int	duplicate(t_node *stack)
 {
-	t_node *stack_a;
-	t_node *stack_b;
-	
+	t_node	*stack_a;
+	t_node	*stack_b;
+
 	stack_a = stack;
 	while (stack_a != NULL)
 	{
@@ -81,10 +81,10 @@ int	duplicate(t_node *stack)
 	return (1);
 }
 
-int size_of_stack(t_node *stack)
+int	size_of_stack(t_node *stack)
 {
-	t_node *node;
-	int i;
+	t_node	*node;
+	int		i;
 
 	node = stack;
 	i = 0;
@@ -96,10 +96,10 @@ int size_of_stack(t_node *stack)
 	return (i);
 }
 
-int check_sort(t_node *stack)
+int	check_sort(t_node *stack)
 {
-	t_node *head;
-	
+	t_node	*head;
+
 	head = stack;
 	while (head && head->next)
 	{
@@ -109,4 +109,3 @@ int check_sort(t_node *stack)
 	}
 	return (1);
 }
-

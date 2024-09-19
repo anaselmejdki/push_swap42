@@ -12,26 +12,26 @@
 
 #include "push_swap.h"
 
-void    push(t_node **stack_a, t_node **stack_b)
+void	push(t_node **stack_a, t_node **stack_b)
 {
-    if (!*stack_a)
-        return ;
-    t_node *tmp;
+	t_node	*tmp;
 
-    tmp = (*stack_a)->next;
-    (*stack_a)->next = (*stack_b);
-    (*stack_b) = (*stack_a);
-    (*stack_a) = tmp;
+	if (!*stack_a)
+		return ;
+	tmp = (*stack_a)->next;
+	(*stack_a)->next = (*stack_b);
+	(*stack_b) = (*stack_a);
+	(*stack_a) = tmp;
 }
 
-void    pb(t_node **stack_a, t_node **stack_b)
+void	pb(t_node **stack_a, t_node **stack_b)
 {
-    push(stack_a, stack_b);
-    write(1, "pb\n", 3);
+	push(stack_a, stack_b);
+	write(1, "pb\n", 3);
 }
 
-void    pa(t_node **stack_b, t_node **stack_a)
+void	pa(t_node **stack_b, t_node **stack_a)
 {
-    push(stack_b, stack_a);
-    write(1, "pa\n", 3);
+	push(stack_b, stack_a);
+	write(1, "pa\n", 3);
 }

@@ -6,26 +6,25 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 10:40:02 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/19 21:47:55 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/19 22:38:22 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_to_a(t_node **stack_a, t_node **stack_b)
+void	push_to_a(t_node **stack_a, t_node **stack_b)
 {
-	int max;
-	int max_position;
+	int	max;
+	int	max_position;
 
 	max = ft_max(*stack_b);
 	max_position = ft_max_position(*stack_b, max);
-		
-	while(size_of_stack(*stack_b) > 0)
+	while (size_of_stack(*stack_b) > 0)
 	{
 		if (max == (*stack_b)->value)
 		{
 			pa(stack_b, stack_a);
-			if(size_of_stack(*stack_b) > 0)
+			if (size_of_stack(*stack_b) > 0)
 			{
 				max = ft_max(*stack_b);
 				max_position = ft_max_position(*stack_b, max);
@@ -41,10 +40,10 @@ void push_to_a(t_node **stack_a, t_node **stack_b)
 	}
 }
 
-void push_to_b(t_node **stack_a, t_node **stack_b, int chank)
+void	push_to_b(t_node **stack_a, t_node **stack_b, int chank)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	len = size_of_stack(*stack_a);
 	i = 0;
@@ -61,26 +60,28 @@ void push_to_b(t_node **stack_a, t_node **stack_b, int chank)
 			pb(stack_a, stack_b);
 			i++;
 		}
-		else if (get_index_position(stack_a, (chank + i)) < (size_of_stack(*stack_a) / 2 ))
+		else if (get_index_position(stack_a, (chank
+					+ i)) < (size_of_stack(*stack_a) / 2))
 			ra(stack_a);
-		else 
-			rra(stack_a);		
+		else
+			rra(stack_a);
 	}
 	push_to_a(stack_a, stack_b);
 }
 
-void    sort_stack(t_node **stack_a, t_node **stack_b, int len)
+void	sort_stack(t_node **stack_a, t_node **stack_b, int len)
 {
-    int *array;
+	int	*array;
 
-    array = malloc(sizeof(int) * len);
-    if (!array)
-        return ;
-    array = fill_array(stack_a, array, len);
-    sort_array(array, len);
-    get_index(stack_a, array, len);
-    if (len < 250)
-        push_to_b(stack_a, stack_b, 15);
-    else
-        push_to_b(stack_a, stack_b, 40);
+	array = malloc(sizeof(int) * len);
+	if (!array)
+		return ;
+	array = fill_array(stack_a, array, len);
+	sort_array(array, len);
+	get_index(stack_a, array, len);
+	free(array);
+	if (len < 250)
+		push_to_b(stack_a, stack_b, 15);
+	else
+		push_to_b(stack_a, stack_b, 40);
 }
