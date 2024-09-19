@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 19:49:36 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/16 23:16:46 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/19 21:52:03 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef struct s_node{
     int value;
+    int index;
     struct s_node *next;
 }   t_node;
 
@@ -33,10 +34,18 @@ void    create_and_add_node(t_node **stack_a, long nbr);
 int	duplicate(t_node *stack);
 int size_of_stack(t_node *stack);
 int check_sort(t_node *stack);
-void sort_stack(t_node *stack);
 void    sorting(t_node **stack_a, t_node **stack_b, int len);
-int    max(t_node *stack);
-
+int    ft_max(t_node *stack);
+int ft_min(t_node *stack);
+void    revpush(t_node **stack_a, t_node **stack_b);
+void    get_index(t_node **stack, int *array, int len);
+void push_to_b(t_node **stack_a, t_node **stack_b, int chunk);
+int *fill_array(t_node **stack, int *array, int len);
+void    sort_array(int *array, int len);
+void    sort_stack(t_node **stack_a, t_node **stack_b, int len);
+void    get_index(t_node **stack, int *array, int len);
+int get_index_position(t_node **stack, int chunk);
+int ft_max_position(t_node *stack, int max);
 //Instructions
 //swap
 void swap(t_node **stack);
