@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:36:40 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/13 22:57:07 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/20 22:25:57 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	**ft_split(char *str, char c)
 		{
 			len = fucking_25(&split[j], str, i, c);
 			if (!len)
-				return (free_kolxi(split), NULL);
+				return (free_all(split), NULL);
 			j++;
 			i += len;
 		}

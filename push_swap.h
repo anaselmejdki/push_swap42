@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 22:44:14 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/19 22:53:00 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/20 23:42:23 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <stdio.h>
 
 typedef struct s_node
 {
@@ -25,8 +26,8 @@ typedef struct s_node
 }					t_node;
 
 // Functions
-long int			ft_atoi(char *str);
-void				free_kolxi(char **str);
+long long				ft_atoi(char *str);
+void				free_all(char **str);
 char				**ft_split(char *str, char c);
 int					is_valid(char *str);
 int					fill_stack_a(t_node **stack, char **av);
@@ -46,6 +47,7 @@ void				sort_stack(t_node **stack_a, t_node **stack_b, int len);
 void				get_index(t_node **stack, int *array, int len);
 int					get_index_position(t_node **stack, int chunk);
 int					ft_max_position(t_node *stack, int max);
+void				free_if_failure(char *str, char **split);
 // Instructions
 // swap
 void				swap(t_node **stack);

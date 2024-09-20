@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 22:47:37 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/19 22:47:39 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/20 22:54:47 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ int	main(int ac, char **av)
 	t_node	*stack_a;
 	t_node	*stack_b;
 
-	if (ac < 2)
-		return (write(1, "ERROR\n", 6), 0);
+	(void)ac;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (fill_stack_a(&stack_a, av) == 0 || duplicate(stack_a) == 0)
 	{
-		write(1, "ERROR\n", 6);
+		write(2, "Error\n", 6);
 		free_stack(&stack_a);
 		return (0);
 	}

@@ -6,17 +6,30 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 09:57:44 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/19 22:15:55 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/21 00:45:23 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long int	ft_atoi(char *str)
+void	free_all(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+long long	ft_atoi(char *str)
 {
 	int			i;
 	int			s;
-	long int	r;
+	long long	r;
 
 	i = 0;
 	s = 1;
@@ -34,34 +47,29 @@ long int	ft_atoi(char *str)
 		r = r * 10 + str[i] - '0';
 		i++;
 	}
+	r = r * s;
+	if (r > INT_MAX || r < INT_MIN)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 	return (r * s);
 }
 
-void	free_kolxi(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
-
 int	is_valid(char *str)
-{
+{	
 	int	i;
 
 	i = 0;
-	if (str[0] == '-' || str[0] == '+')
+	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (str[i] >= '0' && str[i] <= '9')
+			return (1);
+		else
 			return (0);
 		i++;
 	}
-	return (1);
+	return (0);
 }

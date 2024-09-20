@@ -6,7 +6,7 @@
 /*   By: ael-mejd <ael-mejd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 12:57:29 by ael-mejd          #+#    #+#             */
-/*   Updated: 2024/09/19 22:16:04 by ael-mejd         ###   ########.fr       */
+/*   Updated: 2024/09/20 23:42:30 by ael-mejd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,18 @@ int	fill_stack_a(t_node **stack, char **av)
 	{
 		split = ft_split(av[i], ' ');
 		if (!split[0])
-			return (free_kolxi(split), 0);
+			return (free_all(split), 0);
 		j = 0;
 		while (split[j])
 		{
 			if (is_valid(split[j]) == 0)
-				return (free_kolxi(split), 0);
+				return (free_all(split), 0);
 			if (ft_atoi(split[j]) > INT_MAX || ft_atoi(split[j]) < INT_MIN)
-				return (free_kolxi(split), 0);
+				return (free_all(split), 0);
 			create_and_add_node(stack, ft_atoi(split[j]));
 			j++;
 		}
-		free_kolxi(split);
+		free_all(split);
 		i++;
 	}
 	return (1);
