@@ -1,22 +1,16 @@
 # Push_Swap
 
-First of all, I strongly suggest you to read [my blog post](https://medium.com/@ayogun/push-swap-c1f5d2d41e97). If you are as lazy as I am and looking for 125 score, you are in right place.
+First of all, I strongly suggest you to read [this blog post](https://medium.com/@ayogun/push-swap-c1f5d2d41e97). If you are as lazy as I am and looking for 125 score, you are in right place.
 
-</br>
 
-<img src="./img/PUSH SWAP.png">
-
-</br>
 
 # Content
 
 1. [Challenge](#challenge)
 2. [Project](#the-project)
 3. [Pseudo Code](#psuedo-code)
-4. [Flow Chart](#flowchart)
-5. [Visualizer](#visualizer)
-6. [Checker](#checker)
-7. [Resources](#resources)
+4. [Checker](#checker)
+5. [Resources](#resources)
 
 </br></br>
 
@@ -78,7 +72,6 @@ In no way can it quit in an unexpected manner (segmentation fault, bus error, do
 
 1. In order to start sorting, my code pushes first two elements from top of the stack_a to the stack_b. By this way, we are creating one smallest number and one biggest number in stack_b. This is the prerequisites of my code. Because before pushing a number from stack_a to stack_b, one of the major thing the algorithm does is; comparing the number being pushed with the smallest number of stack_b and the biggest number of stack_b.
 
-<img src="./img/first_two.png">
 
 2. At this step, algorithm checks every number in stack_a. It searches the number which requires the minimum amount of operations in order to be placed at stack_b in correct spot.
 
@@ -88,37 +81,28 @@ In no way can it quit in an unexpected manner (segmentation fault, bus error, do
 
 5. Algorithm quickly sorts the left three members in the stack_a.
 
-<img src="./img/last_three.png">
 
 6. Every members in stack_b one by one are being pushed to the stack_a from top to the bottom. However, it checks everytime before the elements are being pushed. This continues until the stack_b is emptied.
 
-<img src="./img/emptied_b.png">
 
 7. Finally, last time required amount of rotation is being applied in order to bring the smallest number on to the top of the stack_a.
 
-<img src="./img/final.png">
 
 </br>
 
-### Flowchart
 
-You can take a closer look at it.
 
-<img src="./img/flow-chart.svg"/>
 
-Don't forget to open the image in new_tab in order to make zoom in.
+# Checker
 
-</br>
+The ```checker``` program reads a random list of integers from the stdin, stores them, and checks to see
+if they are sorted. <br />
 
-## Visualizer
+## How does it work?
 
-<img src="./img/push_swap_visualizer.gif">
+Checker program run the sorting algorithm. Sorting algorithm prints out a serial of operations with following a new line character.
 
-</br>
-
-## Checker
-
-For furhter detail about checker program, [click here](./srcs/checker/README.md).
+The checker program reads the outputs with thanks to get_next_line function. After reading each of operations, one by one, it applies same operations to the stacks. At the end, it checks if the stacks are in desired state. Which means it checks if the stack is sorted. 
 
 </br>
 
